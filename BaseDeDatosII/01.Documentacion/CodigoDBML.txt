@@ -1,0 +1,71 @@
+Código DBML:
+Table DimEmpleado {
+ID_empleado int [pk]
+nombre varchar
+apellido1 varchar
+apellido2 varchar
+fullname_empleado varchar
+ID_oficina int
+ID_jefe int
+puesto varchar
+}
+Table DimCliente {
+ID_cliente int [pk]
+nombre_cliente varchar
+nombre_contacto varchar
+apellido_contacto varchar
+nombre_completo varchar
+telefono varchar
+linea_direccion1 varchar
+ciudad varchar
+pais varchar
+ID_empleado_rep_ventas int
+limite_credito decimal
+
+}
+Table DimProducto {
+ID_DIMProducto int [pk]
+ID_producto int
+CodigoProducto varchar
+nombre varchar
+Categoria_id int
+Category varchar
+dimensiones varchar
+proveedor varchar
+descripcion varchar
+cantidad_en_stock int
+precio_venta decimal
+precio_proveedor decimal
+}
+Table DimTiempo {
+idTiempo int [pk]
+fecha date
+Day int
+Moth int
+Year int
+NumWeek int
+Quarter int
+DayWeek varchar
+}
+
+Table PedidoVenta {
+ID_PV int [pk]
+ID_pedido int
+ID_detalle_pedido int
+Fecha_Pedido int
+Fecha_Esperada int
+Fecha_Entrega int
+estado varchar
+Comentarios text
+ID_cliente int
+ID_Empleado_Representante_Ventas int
+ID_producto int
+cantidad int
+precio_unidad decimal
+}
+Ref: PedidoVenta.ID_cliente > DimCliente.ID_cliente
+Ref: PedidoVenta.ID_Empleado_Representante_Ventas > DimEmpleado.ID_empleado
+Ref: PedidoVenta.ID_producto > DimProducto.ID_producto
+Ref: PedidoVenta.Fecha_Pedido > DimTiempo.idTiempo
+Ref: PedidoVenta.Fecha_Esperada > DimTiempo.idTiempo
+Ref: PedidoVenta.Fecha_Entrega > DimTiempo.idTiempo
