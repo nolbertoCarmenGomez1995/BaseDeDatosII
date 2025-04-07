@@ -1,0 +1,23 @@
+SELECT
+    P.ID_pedido,
+    DP.ID_detalle_pedido,
+    FP.idTiempo AS 'Fecha Pedido', 
+    FE.idTiempo AS 'Fecha Esperada', 
+	FEN.idTiempo AS 'Fecha Entrega',
+    P.estado,
+    ISNULL(P.comentarios, 'N/A') AS 'Comentarios',
+    P.ID_cliente,
+    EM.ID_empleado AS 'Id_Empleado_Representante_Ventas',
+    DP.ID_producto,
+    DP.cantidad,
+    DP.precio_unidad
+FROM DestinoSTPedido P
+INNER JOIN DestinoSTDetallePedido DP ON P.ID_pedido = DP.ID_pedido
+INNER JOIN DimTiempo FP ON P.fecha_pedido = FP.fecha
+INNER JOIN DimTiempo FE ON P.fecha_esperada = FE.fecha
+INNER  JOIN DimTiempo FEN ON P.fecha_entrega = FEN.fecha
+INNER JOIN DestinoSTCliente CL ON P.ID_cliente = CL.ID_cliente
+INNER JOIN DestinoSTEmpleado EM ON CL.ID_empleado_rep_ventas = EM.ID_empleado
+INNER JOIN DestinoSTOFicina OFI ON EM.ID_oficina = OFI.ID_oficina 
+INNER JOIN DestinoSTProducto PR ON DP.ID_producto = PR.ID_producto
+INNER JOIN STCategoriaProducto CP ON PR.Categoria = CP.Id_Categoria
