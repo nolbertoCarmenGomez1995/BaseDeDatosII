@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ADMO.jardineria"
+  DTS:DTSID="{0605FC52-9102-46E3-986E-C197DED0DBB4}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=ADMO;Initial Catalog=jardineria;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;Application Name=SSIS-Prueba1-{0605FC52-9102-46E3-986E-C197DED0DBB4}ADMO.jardineria;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
